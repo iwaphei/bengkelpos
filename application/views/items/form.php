@@ -32,9 +32,34 @@ echo form_open('items/save/'.$item_info->item_id,array('id'=>'item_form', 'encty
 <div class="field_row clearfix">
 <?php echo form_label($this->lang->line('items_category').':', 'category',array('class'=>'required wide')); ?>
 	<div class='form_field'>
-	<?php echo form_input(array(
+	<?php 
+	echo form_input(array(
 		'name'=>'category',
 		'id'=>'category',
+		'value'=>$item_info->category)
+	);?>
+	</div>
+</div>
+
+<div class="field_row clearfix">
+<?php echo form_label($this->lang->line('items_color').':', 'color',array('class'=>'required wide')); ?>
+	<div class='form_field'>
+	<?php 
+	echo form_input(array(
+		'name'=>'color',
+		'id'=>'color',
+		'value'=>$item_info->category)
+	);?>
+	</div>
+</div>
+
+<div class="field_row clearfix">
+<?php echo form_label($this->lang->line('items_dimension').':', 'dimension',array('class'=>'required wide')); ?>
+	<div class='form_field'>
+	<?php 
+	echo form_input(array(
+		'name'=>'dimension',
+		'id'=>'dimension',
 		'value'=>$item_info->category)
 	);?>
 	</div>
