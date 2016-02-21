@@ -18,7 +18,7 @@
     <link href="themes/adminlte/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
     <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
-    <link href="themes/adminlte/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+    <link href="themes/adminlte/dist/css/skins/_all-skins.css" rel="stylesheet" type="text/css" />
     <!-- daterange picker -->
     <link href="themes/adminlte/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
     <!-- Bootstrap Color Picker -->
