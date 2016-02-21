@@ -11,11 +11,13 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
 -- Dumping database structure for bengkelpos
+DROP DATABASE IF EXISTS `bengkelpos`;
 CREATE DATABASE IF NOT EXISTS `bengkelpos` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `bengkelpos`;
 
 
 -- Dumping structure for table bengkelpos.ospos_app_config
+DROP TABLE IF EXISTS `ospos_app_config`;
 CREATE TABLE IF NOT EXISTS `ospos_app_config` (
   `key` varchar(255) NOT NULL,
   `value` varchar(255) NOT NULL,
@@ -154,6 +156,7 @@ INSERT INTO `ospos_app_config` (`key`, `value`) VALUES
 
 
 -- Dumping structure for table bengkelpos.ospos_customers
+DROP TABLE IF EXISTS `ospos_customers`;
 CREATE TABLE IF NOT EXISTS `ospos_customers` (
   `person_id` int(10) NOT NULL,
   `company_name` varchar(255) DEFAULT NULL,
@@ -175,6 +178,7 @@ INSERT INTO `ospos_customers` (`person_id`, `company_name`, `account_number`, `t
 
 
 -- Dumping structure for table bengkelpos.ospos_employees
+DROP TABLE IF EXISTS `ospos_employees`;
 CREATE TABLE IF NOT EXISTS `ospos_employees` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -193,6 +197,7 @@ INSERT INTO `ospos_employees` (`username`, `password`, `person_id`, `deleted`) V
 
 
 -- Dumping structure for table bengkelpos.ospos_giftcards
+DROP TABLE IF EXISTS `ospos_giftcards`;
 CREATE TABLE IF NOT EXISTS `ospos_giftcards` (
   `record_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `giftcard_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -212,6 +217,7 @@ CREATE TABLE IF NOT EXISTS `ospos_giftcards` (
 
 
 -- Dumping structure for table bengkelpos.ospos_grants
+DROP TABLE IF EXISTS `ospos_grants`;
 CREATE TABLE IF NOT EXISTS `ospos_grants` (
   `permission_id` varchar(255) NOT NULL,
   `person_id` int(10) NOT NULL,
@@ -329,6 +335,7 @@ INSERT INTO `ospos_grants` (`permission_id`, `person_id`) VALUES
 
 
 -- Dumping structure for table bengkelpos.ospos_inventory
+DROP TABLE IF EXISTS `ospos_inventory`;
 CREATE TABLE IF NOT EXISTS `ospos_inventory` (
   `trans_id` int(11) NOT NULL AUTO_INCREMENT,
   `trans_items` int(11) NOT NULL DEFAULT '0',
@@ -494,6 +501,7 @@ INSERT INTO `ospos_inventory` (`trans_id`, `trans_items`, `trans_user`, `trans_d
 
 
 -- Dumping structure for table bengkelpos.ospos_items
+DROP TABLE IF EXISTS `ospos_items`;
 CREATE TABLE IF NOT EXISTS `ospos_items` (
   `name` varchar(255) NOT NULL,
   `category` varchar(255) NOT NULL,
@@ -545,6 +553,7 @@ INSERT INTO `ospos_items` (`name`, `category`, `supplier_id`, `item_number`, `de
 
 
 -- Dumping structure for table bengkelpos.ospos_items_taxes
+DROP TABLE IF EXISTS `ospos_items_taxes`;
 CREATE TABLE IF NOT EXISTS `ospos_items_taxes` (
   `item_id` int(10) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -563,6 +572,7 @@ INSERT INTO `ospos_items_taxes` (`item_id`, `name`, `percent`) VALUES
 
 
 -- Dumping structure for table bengkelpos.ospos_item_kits
+DROP TABLE IF EXISTS `ospos_item_kits`;
 CREATE TABLE IF NOT EXISTS `ospos_item_kits` (
   `item_kit_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -578,6 +588,7 @@ INSERT INTO `ospos_item_kits` (`item_kit_id`, `name`, `description`) VALUES
 
 
 -- Dumping structure for table bengkelpos.ospos_item_kit_items
+DROP TABLE IF EXISTS `ospos_item_kit_items`;
 CREATE TABLE IF NOT EXISTS `ospos_item_kit_items` (
   `item_kit_id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
@@ -598,6 +609,7 @@ INSERT INTO `ospos_item_kit_items` (`item_kit_id`, `item_id`, `quantity`) VALUES
 
 
 -- Dumping structure for table bengkelpos.ospos_item_quantities
+DROP TABLE IF EXISTS `ospos_item_quantities`;
 CREATE TABLE IF NOT EXISTS `ospos_item_quantities` (
   `item_id` int(11) NOT NULL,
   `location_id` int(11) NOT NULL,
@@ -735,12 +747,14 @@ INSERT INTO `ospos_item_quantities` (`item_id`, `location_id`, `quantity`) VALUE
 
 
 -- Dumping structure for table bengkelpos.ospos_modules
+DROP TABLE IF EXISTS `ospos_modules`;
 CREATE TABLE IF NOT EXISTS `ospos_modules` (
   `name_lang_key` varchar(255) NOT NULL,
   `desc_lang_key` varchar(255) NOT NULL,
   `sort` int(10) NOT NULL,
   `module_id` varchar(255) NOT NULL,
   `font_awesome_icon` varchar(255) NOT NULL,
+  `sort_number` int(11) NOT NULL,
   PRIMARY KEY (`module_id`),
   UNIQUE KEY `desc_lang_key` (`desc_lang_key`),
   UNIQUE KEY `name_lang_key` (`name_lang_key`)
@@ -748,30 +762,31 @@ CREATE TABLE IF NOT EXISTS `ospos_modules` (
 
 -- Dumping data for table bengkelpos.ospos_modules: ~10 rows (approximately)
 /*!40000 ALTER TABLE `ospos_modules` DISABLE KEYS */;
-INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`) VALUES
-	('module_config', 'module_config_desc', 100, 'config', 'fa fa-cogs');
-INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`) VALUES
-	('module_customers', 'module_customers_desc', 10, 'customers', 'fa fa-users');
-INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`) VALUES
-	('module_employees', 'module_employees_desc', 80, 'employees', 'fa fa-users');
-INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`) VALUES
-	('module_giftcards', 'module_giftcards_desc', 90, 'giftcards', 'fa fa-gift');
-INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`) VALUES
-	('module_items', 'module_items_desc', 20, 'items', 'fa fa-hdd-o');
-INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`) VALUES
-	('module_item_kits', 'module_item_kits_desc', 30, 'item_kits', 'ion ion-cube');
-INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`) VALUES
-	('module_receivings', 'module_receivings_desc', 60, 'receivings', 'fa fa-truck');
-INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`) VALUES
-	('module_reports', 'module_reports_desc', 50, 'reports', 'fa fa-file-text-o');
-INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`) VALUES
-	('module_sales', 'module_sales_desc', 70, 'sales', 'fa fa-shopping-cart');
-INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`) VALUES
-	('module_suppliers', 'module_suppliers_desc', 40, 'suppliers', 'fa fa-retweet');
+INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`, `sort_number`) VALUES
+	('module_config', 'module_config_desc', 100, 'config', 'fa fa-cogs', 10);
+INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`, `sort_number`) VALUES
+	('module_customers', 'module_customers_desc', 10, 'customers', 'fa fa-users', 3);
+INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`, `sort_number`) VALUES
+	('module_employees', 'module_employees_desc', 80, 'employees', 'fa fa-users', 8);
+INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`, `sort_number`) VALUES
+	('module_giftcards', 'module_giftcards_desc', 90, 'giftcards', 'fa fa-gift', 7);
+INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`, `sort_number`) VALUES
+	('module_items', 'module_items_desc', 20, 'items', 'fa fa-hdd-o', 1);
+INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`, `sort_number`) VALUES
+	('module_item_kits', 'module_item_kits_desc', 30, 'item_kits', 'ion ion-cube', 2);
+INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`, `sort_number`) VALUES
+	('module_receivings', 'module_receivings_desc', 60, 'receivings', 'fa fa-truck', 6);
+INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`, `sort_number`) VALUES
+	('module_reports', 'module_reports_desc', 50, 'reports', 'fa fa-file-text-o', 9);
+INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`, `sort_number`) VALUES
+	('module_sales', 'module_sales_desc', 70, 'sales', 'fa fa-shopping-cart', 4);
+INSERT INTO `ospos_modules` (`name_lang_key`, `desc_lang_key`, `sort`, `module_id`, `font_awesome_icon`, `sort_number`) VALUES
+	('module_suppliers', 'module_suppliers_desc', 40, 'suppliers', 'fa fa-retweet', 5);
 /*!40000 ALTER TABLE `ospos_modules` ENABLE KEYS */;
 
 
 -- Dumping structure for table bengkelpos.ospos_module_menu
+DROP TABLE IF EXISTS `ospos_module_menu`;
 CREATE TABLE IF NOT EXISTS `ospos_module_menu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) DEFAULT NULL,
@@ -847,6 +862,7 @@ INSERT INTO `ospos_module_menu` (`id`, `name`, `module`, `parent_id`, `href`, `s
 
 
 -- Dumping structure for table bengkelpos.ospos_people
+DROP TABLE IF EXISTS `ospos_people`;
 CREATE TABLE IF NOT EXISTS `ospos_people` (
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
@@ -878,6 +894,7 @@ INSERT INTO `ospos_people` (`first_name`, `last_name`, `gender`, `phone_number`,
 
 
 -- Dumping structure for table bengkelpos.ospos_permissions
+DROP TABLE IF EXISTS `ospos_permissions`;
 CREATE TABLE IF NOT EXISTS `ospos_permissions` (
   `permission_id` varchar(255) NOT NULL,
   `module_id` varchar(255) NOT NULL,
@@ -997,6 +1014,7 @@ INSERT INTO `ospos_permissions` (`permission_id`, `module_id`, `location_id`) VA
 
 
 -- Dumping structure for table bengkelpos.ospos_receivings
+DROP TABLE IF EXISTS `ospos_receivings`;
 CREATE TABLE IF NOT EXISTS `ospos_receivings` (
   `receiving_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `supplier_id` int(10) DEFAULT NULL,
@@ -1023,6 +1041,7 @@ INSERT INTO `ospos_receivings` (`receiving_time`, `supplier_id`, `employee_id`, 
 
 
 -- Dumping structure for table bengkelpos.ospos_receivings_items
+DROP TABLE IF EXISTS `ospos_receivings_items`;
 CREATE TABLE IF NOT EXISTS `ospos_receivings_items` (
   `receiving_id` int(10) NOT NULL DEFAULT '0',
   `item_id` int(10) NOT NULL DEFAULT '0',
@@ -1053,6 +1072,7 @@ INSERT INTO `ospos_receivings_items` (`receiving_id`, `item_id`, `description`, 
 
 
 -- Dumping structure for table bengkelpos.ospos_sales
+DROP TABLE IF EXISTS `ospos_sales`;
 CREATE TABLE IF NOT EXISTS `ospos_sales` (
   `sale_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `customer_id` int(10) DEFAULT NULL,
@@ -1105,6 +1125,7 @@ INSERT INTO `ospos_sales` (`sale_time`, `customer_id`, `employee_id`, `comment`,
 
 
 -- Dumping structure for table bengkelpos.ospos_sales_items
+DROP TABLE IF EXISTS `ospos_sales_items`;
 CREATE TABLE IF NOT EXISTS `ospos_sales_items` (
   `sale_id` int(10) NOT NULL DEFAULT '0',
   `item_id` int(10) NOT NULL DEFAULT '0',
@@ -1163,6 +1184,7 @@ INSERT INTO `ospos_sales_items` (`sale_id`, `item_id`, `description`, `serialnum
 
 
 -- Dumping structure for table bengkelpos.ospos_sales_items_taxes
+DROP TABLE IF EXISTS `ospos_sales_items_taxes`;
 CREATE TABLE IF NOT EXISTS `ospos_sales_items_taxes` (
   `sale_id` int(10) NOT NULL,
   `item_id` int(10) NOT NULL,
@@ -1190,6 +1212,7 @@ INSERT INTO `ospos_sales_items_taxes` (`sale_id`, `item_id`, `line`, `name`, `pe
 
 
 -- Dumping structure for table bengkelpos.ospos_sales_payments
+DROP TABLE IF EXISTS `ospos_sales_payments`;
 CREATE TABLE IF NOT EXISTS `ospos_sales_payments` (
   `sale_id` int(10) NOT NULL,
   `payment_type` varchar(40) NOT NULL,
@@ -1240,6 +1263,7 @@ INSERT INTO `ospos_sales_payments` (`sale_id`, `payment_type`, `payment_amount`,
 
 
 -- Dumping structure for table bengkelpos.ospos_sales_suspended
+DROP TABLE IF EXISTS `ospos_sales_suspended`;
 CREATE TABLE IF NOT EXISTS `ospos_sales_suspended` (
   `sale_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `customer_id` int(10) DEFAULT NULL,
@@ -1260,6 +1284,7 @@ CREATE TABLE IF NOT EXISTS `ospos_sales_suspended` (
 
 
 -- Dumping structure for table bengkelpos.ospos_sales_suspended_items
+DROP TABLE IF EXISTS `ospos_sales_suspended_items`;
 CREATE TABLE IF NOT EXISTS `ospos_sales_suspended_items` (
   `sale_id` int(10) NOT NULL DEFAULT '0',
   `item_id` int(10) NOT NULL DEFAULT '0',
@@ -1286,6 +1311,7 @@ CREATE TABLE IF NOT EXISTS `ospos_sales_suspended_items` (
 
 
 -- Dumping structure for table bengkelpos.ospos_sales_suspended_items_taxes
+DROP TABLE IF EXISTS `ospos_sales_suspended_items_taxes`;
 CREATE TABLE IF NOT EXISTS `ospos_sales_suspended_items_taxes` (
   `sale_id` int(10) NOT NULL,
   `item_id` int(10) NOT NULL,
@@ -1304,6 +1330,7 @@ CREATE TABLE IF NOT EXISTS `ospos_sales_suspended_items_taxes` (
 
 
 -- Dumping structure for table bengkelpos.ospos_sales_suspended_payments
+DROP TABLE IF EXISTS `ospos_sales_suspended_payments`;
 CREATE TABLE IF NOT EXISTS `ospos_sales_suspended_payments` (
   `sale_id` int(10) NOT NULL,
   `payment_type` varchar(40) NOT NULL,
@@ -1318,6 +1345,7 @@ CREATE TABLE IF NOT EXISTS `ospos_sales_suspended_payments` (
 
 
 -- Dumping structure for table bengkelpos.ospos_sessions
+DROP TABLE IF EXISTS `ospos_sessions`;
 CREATE TABLE IF NOT EXISTS `ospos_sessions` (
   `session_id` varchar(40) NOT NULL DEFAULT '0',
   `ip_address` varchar(45) NOT NULL DEFAULT '0',
@@ -1327,7 +1355,7 @@ CREATE TABLE IF NOT EXISTS `ospos_sessions` (
   PRIMARY KEY (`session_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table bengkelpos.ospos_sessions: ~52 rows (approximately)
+-- Dumping data for table bengkelpos.ospos_sessions: ~54 rows (approximately)
 /*!40000 ALTER TABLE `ospos_sessions` DISABLE KEYS */;
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 	('0148a39435b34ebc75678e1cf9007048', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0', 1455095550, 'a:8:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";s:4:"cart";a:0:{}s:9:"sale_mode";s:4:"sale";s:13:"sale_location";s:1:"1";s:8:"customer";i:-1;s:8:"payments";a:0:{}s:20:"sales_invoice_number";s:1:"3";}');
@@ -1378,8 +1406,6 @@ INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_ac
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 	('6c4a8c0b7cf444f441ba2e033f272168', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0', 1455529829, '');
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-	('731c7e88236d442950cc1ae9e2455458', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36', 1456007357, '');
-INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 	('758279388951ad8d4717cf1e4059a84a', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0', 1455809147, 'a:2:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";}');
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 	('772cc1c8a29384fd5eaf277876b270e2', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0', 1454393251, 'a:2:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";}');
@@ -1390,11 +1416,11 @@ INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_ac
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 	('9711dda4c869e57a303f97c1d37042cf', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0', 1454385518, 'a:11:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";s:13:"sale_location";s:1:"6";s:13:"item_location";s:1:"1";s:22:"sales_print_after_sale";s:4:"true";s:28:"sales_invoice_number_enabled";s:4:"true";s:4:"cart";a:0:{}s:9:"sale_mode";s:4:"sale";s:8:"customer";i:-1;s:8:"payments";a:0:{}s:20:"sales_invoice_number";s:1:"2";}');
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-	('9c12c58293cb23f0ceb2a303f7d4f100', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0', 1456037937, '');
-INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 	('a2540f93af62987415bdd9373cbfa1ce', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0', 1454400410, 'a:2:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";}');
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 	('a7a2bedb993ad0e6fdb5fd7a432a18b1', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0', 1453950418, '');
+INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
+	('abfcd6b8af056a71179d904895a4f680', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0', 1456069015, '');
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 	('ad2d710d47877d4f6bcbf99e579c3306', '127.0.0.1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:43.0) Gecko/20100101 Firefox/43.0', 1454652702, 'a:10:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";s:13:"sale_location";s:1:"4";s:13:"item_location";s:1:"1";s:4:"cart";a:0:{}s:8:"customer";i:-1;s:8:"payments";a:1:{s:4:"cash";a:2:{s:12:"payment_type";s:4:"cash";s:14:"payment_amount";s:12:"200000.00000";}}s:20:"sales_invoice_number";s:1:"2";s:9:"sale_mode";s:4:"sale";s:22:"sales_print_after_sale";s:4:"true";}');
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
@@ -1414,6 +1440,8 @@ INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_ac
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 	('df2935a36c23f6865b3b3c8c7aa82739', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0', 1455096115, 'a:8:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";s:4:"cart";a:0:{}s:9:"sale_mode";s:4:"sale";s:13:"sale_location";s:1:"1";s:8:"customer";i:-1;s:8:"payments";a:0:{}s:20:"sales_invoice_number";s:1:"3";}');
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
+	('e12fddfaf5730bdd6a3b01a60ab7ee1d', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36', 1456039300, '');
+INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 	('e388567962d97856d795be2c9f8ddc84', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0', 1454407061, 'a:2:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";}');
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 	('e8001e21f48d6343c22ae47c560124ed', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0', 1455114852, '');
@@ -1424,9 +1452,13 @@ INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_ac
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 	('eaf6d485940b51fb0adc347611d852c7', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0', 1454403134, 'a:2:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";}');
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
+	('eebbee72bfe4ae14ba067c5f54e312a6', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36', 1456062496, '');
+INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 	('f026ed0064bdf93cf7c04952ce509564', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0', 1455283020, '');
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 	('f209524d8cbb535cfea04d1f01adebc2', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0', 1455101399, 'a:8:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";s:4:"cart";a:1:{i:1;a:16:{s:7:"item_id";s:1:"4";s:13:"item_location";s:1:"1";s:10:"stock_name";s:5:"stock";s:4:"line";i:1;s:4:"name";s:20:"S3Vyc2kgU3lhaHJpbmk=";s:11:"item_number";s:4:"K002";s:11:"description";s:0:"";s:12:"serialnumber";s:0:"";s:21:"allow_alt_description";s:1:"0";s:13:"is_serialized";s:1:"0";s:8:"quantity";i:1;s:8:"discount";s:1:"0";s:8:"in_stock";s:2:"17";s:5:"price";s:9:"300000.00";s:5:"total";s:9:"300000.00";s:16:"discounted_total";s:12:"300000.00000";}}s:9:"sale_mode";s:4:"sale";s:13:"sale_location";s:1:"1";s:8:"payments";a:1:{s:4:"cash";a:2:{s:12:"payment_type";s:4:"cash";s:14:"payment_amount";s:9:"300000.00";}}s:8:"customer";i:-1;s:20:"sales_invoice_number";s:1:"3";}');
+INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
+	('f4fb439ef4d3761d17e0140098572a18', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0', 1456039115, 'a:2:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";}');
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
 	('f8b8503cd2dcb789f57bfa56ceba9ad1', '::1', 'Mozilla/5.0 (Windows NT 6.3; WOW64; rv:44.0) Gecko/20100101 Firefox/44.0', 1455898341, 'a:2:{s:9:"user_data";s:0:"";s:9:"person_id";s:1:"1";}');
 INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
@@ -1437,6 +1469,7 @@ INSERT INTO `ospos_sessions` (`session_id`, `ip_address`, `user_agent`, `last_ac
 
 
 -- Dumping structure for table bengkelpos.ospos_stock_locations
+DROP TABLE IF EXISTS `ospos_stock_locations`;
 CREATE TABLE IF NOT EXISTS `ospos_stock_locations` (
   `location_id` int(11) NOT NULL AUTO_INCREMENT,
   `location_name` varchar(255) DEFAULT NULL,
@@ -1470,6 +1503,7 @@ INSERT INTO `ospos_stock_locations` (`location_id`, `location_name`, `deleted`) 
 
 
 -- Dumping structure for table bengkelpos.ospos_suppliers
+DROP TABLE IF EXISTS `ospos_suppliers`;
 CREATE TABLE IF NOT EXISTS `ospos_suppliers` (
   `person_id` int(10) NOT NULL,
   `company_name` varchar(255) NOT NULL,
