@@ -59,6 +59,7 @@ $lang["items_number_information"] = "Nomor Barang";
 $lang["items_number_required"] = "UPC/EAN/ISBN is a required field";
 $lang["items_one_or_multiple"] = "Item Barang";
 $lang["items_quantity"] = "Jumlah";
+$lang["items_quantity_in"] = "Jumlah Di";
 $lang["items_quantity_number"] = "Jumlah harus angka";
 $lang["items_quantity_required"] = "Jumlah wajib diisi";
 $lang["items_receiving_quantity"] = "Jumlah penerimaan";

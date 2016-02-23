@@ -155,7 +155,7 @@ foreach($stock_locations as $key=>$location_detail)
 {
 ?>
     <div class="field_row clearfix">
-    <?php echo form_label($this->lang->line('items_quantity').' '.$location_detail['location_name'] .':', 
+    <?php echo form_label($this->lang->line('items_quantity_in').' '.$location_detail['location_name'] .':', 
                             $key.'_quantity',
                             array('class'=>'required wide')); ?>
     	<div class='form_field'>
