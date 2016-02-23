@@ -60,6 +60,8 @@ class Customers extends Person_controller
 		$person_data = array(
 		'first_name'=>$this->input->post('first_name'),
 		'last_name'=>$this->input->post('last_name'),
+		'plate_number'=>$this->input->post('plate_number'),
+		'vehicle_info'=>$this->input->post('vehicle_info'),
 		'gender'=>$this->input->post('gender'),
 		'email'=>$this->input->post('email'),
 		'phone_number'=>$this->input->post('phone_number'),

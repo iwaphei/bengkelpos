@@ -126,6 +126,8 @@ function get_people_manage_table($people,$controller)
 	$headers = array('<input type="checkbox" id="select_all" />', 
 	$CI->lang->line('common_last_name'),
 	$CI->lang->line('common_first_name'),
+	$CI->lang->line('customers_plate_number'),
+	$CI->lang->line('customers_vehicle_info'),
 	$CI->lang->line('common_email'),
 	$CI->lang->line('common_phone_number'),
 	'&nbsp');
@@ -173,6 +175,8 @@ function get_person_data_row($person,$controller)
 	$table_data_row.="<td width='5%'><input type='checkbox' id='person_$person->person_id' value='".$person->person_id."'/></td>";
 	$table_data_row.='<td width="20%">'.character_limiter($person->last_name,13).'</td>';
 	$table_data_row.='<td width="20%">'.character_limiter($person->first_name,13).'</td>';
+	$table_data_row.='<td width="20%">'.character_limiter($person->plate_number,13).'</td>';
+	$table_data_row.='<td width="20%">'.character_limiter($person->vehicle_info,13).'</td>';
 	$table_data_row.='<td width="30%">'.mailto($person->email,character_limiter($person->email,22)).'</td>';
 	$table_data_row.='<td width="20%">'.character_limiter($person->phone_number,13).'</td>';		
 	$table_data_row.='<td width="5%">'.anchor($controller_name."/view/$person->person_id/width:$width", $CI->lang->line('common_edit'),array('class'=>'thickbox','title'=>$CI->lang->line($controller_name.'_update'))).'</td>';		
@@ -282,6 +286,7 @@ function get_items_manage_table($items,$controller)
 	$CI->lang->line('items_category'),
 	$CI->lang->line('suppliers_company_name'),
 	$CI->lang->line('items_cost_price'),
+	$CI->lang->line('items_listing_price'),
 	$CI->lang->line('items_unit_price'),
 	$CI->lang->line('items_quantity'),
 	$CI->lang->line('items_tax_percents'),
@@ -345,6 +350,7 @@ function get_item_data_row($item,$controller)
 	$table_data_row.='<td width="14%">'.$item->category.'</td>';
 	$table_data_row.='<td width="14%">'.$item->company_name.'</td>';
 	$table_data_row.='<td width="14%">'.to_currency($item->cost_price).'</td>';
+	$table_data_row.='<td width="14%">'.to_currency($item->listing_price).'</td>';
 	$table_data_row.='<td width="14%">'.to_currency($item->unit_price).'</td>';
     $table_data_row.='<td width="14%">'.$item->quantity.'</td>';
 	$table_data_row.='<td width="14%">'.$tax_percents.'</td>';

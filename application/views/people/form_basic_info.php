@@ -18,6 +18,26 @@
 	);?>
 	</div>
 </div>
+<div class="field_row clearfix">	
+<?php echo form_label($this->lang->line('customers_plate_number').':', 'plate_number',array('class'=>'required')); ?>
+	<div class='form_field'>
+	<?php echo form_input(array(
+		'name'=>'plate_number',
+		'id'=>'plate_number',
+		'value'=>$person_info->plate_number)
+	);?>
+	</div>
+</div>
+<div class="field_row clearfix">	
+<?php echo form_label($this->lang->line('customers_vehicle_info').':', 'vehicle_info',array('class'=>'required')); ?>
+	<div class='form_field'>
+	<?php echo form_input(array(
+		'name'=>'vehicle_info',
+		'id'=>'vehicle_info',
+		'value'=>$person_info->vehicle_info)
+	);?>
+	</div>
+</div>
 
 <div class="field_row clearfix">	
 <?php echo form_label($this->lang->line('common_gender').':', 'gender',

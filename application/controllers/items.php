@@ -396,6 +396,7 @@ class Items extends Secure_area implements iData_controller
 			'dimension'=>$this->input->post('dimension'),
 			'supplier_id'=>$this->input->post('supplier_id')=='' ? null:$this->input->post('supplier_id'),
 			'item_number'=>$this->input->post('item_number')=='' ? null:$this->input->post('item_number'),
+			'listing_price'=>$this->input->post('listing_price'),
 			'cost_price'=>$this->input->post('cost_price'),
 			'unit_price'=>$this->input->post('unit_price'),
 			'reorder_level'=>$this->input->post('reorder_level'),

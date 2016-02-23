@@ -1,5 +1,7 @@
 <?php 
 
+$lang["customers_plate_number"] = "Plat Nomor";
+$lang["customers_vehicle_info"] = "Info Kendaraan";
 $lang["customers_account_number"] = "No.Pelanggan";
 $lang["customers_account_number_duplicate"] = "This account number is already present in the database";
 $lang["customers_basic_information"] = "Informasi Pelanggan";

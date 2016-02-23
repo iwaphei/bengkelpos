@@ -85,6 +85,18 @@ echo form_open('items/save/'.$item_info->item_id,array('id'=>'item_form', 'encty
 </div>
 
 <div class="field_row clearfix">
+<?php echo form_label($this->lang->line('items_listing_price').':', 'listing_price',array('class'=>'wide')); ?>
+	<div class='form_field'>
+	<?php echo form_input(array(
+		'name'=>'listing_price',
+		'size'=>'8',
+		'id'=>'listing_price',
+		'value'=>$item_info->listing_price)
+	);?>
+	</div>
+</div>
+
+<div class="field_row clearfix">
 <?php echo form_label($this->lang->line('items_unit_price').':', 'unit_price',array('class'=>'required wide')); ?>
 	<div class='form_field'>
 	<?php echo form_input(array(
