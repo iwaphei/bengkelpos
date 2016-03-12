@@ -281,9 +281,11 @@ function get_items_manage_table($items,$controller)
 	$table='<table class="tablesorter" id="sortable_table">';
 	
 	$headers = array('<input type="checkbox" id="select_all" />', 
-	$CI->lang->line('items_item_number'),
+	// $CI->lang->line('items_item_number'),
 	$CI->lang->line('items_name'),
 	$CI->lang->line('items_category'),
+	$CI->lang->line('items_merk'),
+	$CI->lang->line('items_dimension'),
 	// $CI->lang->line('suppliers_company_name'),
 	$CI->lang->line('items_listing_price'),
 	$CI->lang->line('items_cost_price'),
@@ -345,9 +347,11 @@ function get_item_data_row($item,$controller)
     
 	$table_data_row='<tr>';
 	$table_data_row.="<td width='3%'><input type='checkbox' id='item_$item->item_id' value='".$item->item_id."'/></td>";
-	$table_data_row.='<td width="15%">'.$item->item_number.'</td>';
+	// $table_data_row.='<td width="15%">'.$item->item_number.'</td>';
 	$table_data_row.='<td width="20%">'.$item->name.'</td>';
 	$table_data_row.='<td width="14%">'.$item->category.'</td>';
+	$table_data_row.='<td width="14%">'.$item->merk.'</td>';
+	$table_data_row.='<td width="14%">'.$item->dimension.'</td>';
 	// $table_data_row.='<td width="14%">'.$item->company_name.'</td>';
 	$table_data_row.='<td width="14%">'.to_currency($item->listing_price).'</td>';
 	$table_data_row.='<td width="14%">'.to_currency($item->cost_price).'</td>';

@@ -58,6 +58,44 @@ echo form_open('items/save_inventory/'.$item_info->item_id,array('id'=>'item_for
 </td>
 </tr>
 <tr>
+<tr>
+<td>	
+<?php echo form_label($this->lang->line('items_merk').':', 'category',array('class'=>'wide')); ?>
+</td>
+<td>	
+	<?php $cat = array (
+		
+		'name'=>'merk',
+		'id'=>'merk',
+		'value'=>$item_info->merk,
+		'style'       => 'border:none',
+		'readonly' => 'readonly'
+		);
+	
+		echo form_input($cat);
+		?>
+</td>
+</tr>
+<tr>
+<td>	
+<?php echo form_label($this->lang->line('items_dimension').':', 'category',array('class'=>'wide')); ?>
+</td>
+<td>	
+	<?php $cat = array (
+		
+		'name'=>'dimension',
+		'id'=>'dimension',
+		'value'=>$item_info->dimension,
+		'style'       => 'border:none',
+		'readonly' => 'readonly'
+		);
+	
+		echo form_input($cat);
+		?>
+</td>
+</tr>
+<tr>
+<tr>
 <td>
 <?php echo form_label($this->lang->line('items_stock_location').':', 'stock_location',array('class'=>'wide')); ?>
 </td>
