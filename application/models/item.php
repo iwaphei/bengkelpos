@@ -370,7 +370,7 @@ class Item extends CI_Model
 	{
 		$suggestions = array();
 
-		$this->db->select('item_id, name');
+		$this->db->select('item_id, name, merk, dimension');
 		$this->db->from('items');
 		$this->db->where('deleted', $is_deleted);
 		$this->db->like('name', $search);
@@ -378,10 +378,10 @@ class Item extends CI_Model
 		$by_name = $this->db->get();
 		foreach($by_name->result() as $row)
 		{
-			$suggestions[] = $row->item_id.'|'.$row->name;
+			$suggestions[] = $row->item_id.' | '.$row->name.' | '.$row->merk.' | '.$row->dimension;
 		}
 
-		$this->db->select('item_id, item_number');
+		$this->db->select('item_id, item_number, name, merk, dimension');
 		$this->db->from('items');
 		$this->db->where('deleted', $is_deleted);
 		$this->db->like('item_number', $search);
@@ -389,11 +389,11 @@ class Item extends CI_Model
 		$by_item_number = $this->db->get();
 		foreach($by_item_number->result() as $row)
 		{
-			$suggestions[] = $row->item_id.'|'.$row->item_number;
+			$suggestions[] = $row->item_id.' | '.$row->item_number.' | '.$row->name.' | '.$row->merk.' | '.$row->dimension;
 		}
 
 		//Search by description
-		$this->db->select('item_id, name, description');
+		/*$this->db->select('item_id, name, description');
 		$this->db->from('items');
 		$this->db->where('deleted', $is_deleted);
 		$this->db->like('description', $search);
@@ -406,7 +406,7 @@ class Item extends CI_Model
 			{
 				$suggestions[] = $entry;
 			}
-		}
+		}*/
 
 		//Search by custom fields
 		if ($search_custom != 0)

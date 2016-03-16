@@ -497,7 +497,9 @@
 				    	selectFirst: false,
 				       	delay:10,
 				    	formatItem: function(row) {
-							return (row.length > 1 && row[1]) || row[0];
+							return row[0]+' | '+row[1]+' | '+row[2]+' | '+row[3];
+							/*console.log(row);
+							return (row.length > 1 && row[1]) || row[0];*/
 						}
 				    });
 
