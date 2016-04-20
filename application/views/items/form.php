@@ -308,7 +308,7 @@ $(document).ready(function()
     {
         stay_open = false;
     });
-	
+
 	var no_op = function(event, data, formatted){};
 	$("#category").autocomplete("<?php echo site_url('items/suggest_category');?>",{max:100,minChars:0,delay:10}).result(no_op).search();
 
@@ -356,6 +356,7 @@ $(document).ready(function()
 					else
 					{
 						tb_remove();
+						location.reload();
 					}
 					post_item_form_submit(response, stay_open);	
 				},
